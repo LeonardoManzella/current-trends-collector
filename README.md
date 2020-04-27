@@ -1,17 +1,15 @@
-# 👷 `worker-template` Hello World
+# Current Trends Collector 
+A twitter trending topics & google news trends analyzer/summarizer.  
+It summarizes Global & Argentinian trends then sends them in a RSS-friendly and Email-friendly format 
+Created using IFTT & Cloudflare Worker 
 
-A template for kick starting a Cloudflare worker project.
+## Technology
+The project uses the following libraries:
 
-[`index.js`](https://github.com/cloudflare/worker-template/blob/master/index.js) is the content of the Workers script.
+* Node.js
+* Wrangler
+* Prettier
 
-#### Wrangler
-
-To generate using [wrangler](https://github.com/cloudflare/wrangler)
-
-```
-wrangler generate projectname https://github.com/cloudflare/worker-template
-```
-
-#### Serverless
+### Serverless
 
 To deploy using serverless add a [`serverless.yml`](https://serverless.com/framework/docs/providers/cloudflare/) file.
