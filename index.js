@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 // EntryPoint for Cloudflare
 addEventListener('fetch', event => {
   event.respondWith(handleRequest(event.request))
@@ -9,6 +11,10 @@ addEventListener('fetch', event => {
  * @param {Request} request
  */
 async function handleRequest(request) {
+  console.log("---------------------------------------------------------------------------------------------");
+  console.log("handleRequest initiated");
+  //TODO use axios to post IFTT to generate email
+
   return new Response('Hello worker response!', {
     headers: { 'content-type': 'text/plain' },
   });
