@@ -9,17 +9,44 @@
 // importScripts("workerFakeDOM.js");
 // importScripts('jquery-3.3.1');
 // const htmlparser2 = require("htmlparser2");
-import axios from 'axios';
 
+const IFTTT_WEBHOOK_URL = 'https://maker.ifttt.com/trigger/estado_transito/with/key/bEJDjvRQ04PPYZVlKAP2E8';
 
 //Handle Main Request
 export default async function handleRequest(mainRequest) {
     console.log("---------------------------------------------------------------------------------------------");
     console.log("handleRequest initiated");
-    //TODO use axios to post IFTT to generate email
-   
 
-    return new Response('Hello worker!', {
+    //TODO make basic responsive html table (copy from transportations-changes project), in another JS file
+
+    //TODO use Google API to generate daily trend news, in another JS file
+
+    //TODO parse Twitter analizer page to generate twitter daily trending topics section, in another JS file
+
+    console.group('Calling IFTTT');
+    await fetch(IFTTT_WEBHOOK_URL, {
+        body: JSON.stringify({ 
+            value1: "value1",
+            value2: "value2",
+            value3: "value3",
+            }),
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+    })
+    .then(function (response) {
+        console.log("Post send, response: ", response);
+    })
+    .catch(function (error) {
+        console.error('--- Error Detected ---');
+        console.error(error);
+        console.trace();
+    })
+    .finally(function () {
+        // always executed
+        console.groupEnd();
+    });
+
+    return new Response('Everything worked!', {
         headers: { 'content-type': 'text/plain' },
     });
 }
