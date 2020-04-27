@@ -26,9 +26,9 @@ export default async function handleRequest(mainRequest) {
     console.group('Calling IFTTT');
     await fetch(IFTTT_WEBHOOK_URL, {
         body: JSON.stringify({ 
-            value1: "value1",
-            value2: "value2",
-            value3: "value3",
+            value1: "email",
+            value2: "title",
+            value3: "optional value",
             }),
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
