@@ -1,11 +1,6 @@
 export function generateGoogleTable(argArticles, globalArticles) {
     console.group('Calling generateTable');
 
-    //TODO First make the content show correctly without styles, only table wireframe
-    //TODO make borders a little rounded 
-    //TODO make a drawing of the elements if it is really comfortable to read on mobile and PC, small images maximize lateral text space, vertical spacing, less grey background
-    //TODO add colors and styles
-
     let tableToReturn = generateTableCard(argArticles, "Argentina") + generateTableCard(globalArticles, "Global");
     console.groupEnd();
     return tableToReturn;
@@ -15,11 +10,11 @@ const generateTableCard = (arrayOfArticles, location) => {
   console.log("Calling generateTableCard. arrayOfArticles: ", arrayOfArticles);
   let sectionToReturn = `
     <div style="margin: 1rem 0; margin-bottom: 2rem;">
-      <table style="width:100%; font-size: 210%;">
+      <table style="width:100%;">
           <tr style="width:100%">
               <td style="width:100%">
                   <center>
-                    <b>Tendencias de Google ${location}</b>
+                    <b style="font-size: 125%;">Tendencias de Google ${location}</b>
                   </center>
                 </td>
           </tr>
@@ -35,39 +30,60 @@ const generateCardItems = (arrayOfArticles) => {
   console.log("Calling generateCardItems. arrayOfArticles: ", arrayOfArticles);
   let items = '';
   arrayOfArticles.forEach( article => {
-      items += `
-      <div style="background-color:#b2b2b2;">
-        <table style="width:100%; font-size: 180%">
-          <tr style="width:100%">
-            <td style="width:20%; height:100%">
+    console.debug("article: ", article);
+    const FIRST = 0;
+    article = article.articles[FIRST];
+    items += `
+    <div style="background-color:#e2e1e1; border-radius: 0.5rem;">
+      <table style="width:100%;">
+        <tr style="width:100%">
+          
+          ${ article.image && article.image.imageUrl?
+            `<td style="width:20%; height:100%">
               <img
-                  style="max-height:5rem !important; margin-left: 0; display: initial"
-                src="https://t1.gstatic.com/images?q=tbn:ANd9GcRFog8vOY3hsAQ2C69X5z_0SnrxmkLfYEsAMWSDGXJxzvjxEuiEZyCgKCwk-YDR6wug1lxFM4Ot"
+                  style="max-height:5rem !important; margin-left: 0; display: initial; border-radius: 0.5rem;"
+                src="${article.image.imageUrl}"
               />
+            </td>`
+            :''
+          }
+          
+          <td style="width: ${ article.image && article.image.imageUrl? `80%`: `100%`}">
+            <center>
+              <b style="font-size: 100%;">${article.title}</b>
+            </center>
+          </td>
+        </tr>
+      </table>
+      <table style="width:100%;">
+        <tr style="width:100%">
+          <td style="width:100%; font-size: 100%; border-bottom: #d2d2d2 0.025rem solid;">
+            ${article.snippet}
+          </td>
+        </tr>
+      </table>
+      <table style="width:100%;">
+        <tr style="width:100%">
+          <td style="width:95%; font-size: 60%; overflow:hidden; text-overflow:ellipsis">
+            ${article.url}
             </td>
-            <td style="width:80%">
-              <center>
-                <b>Murió el artista plástico Carlos Regazzoni</b>
-              </center>
+            <td style="width:5%;">
+              <center style="font-size: 100%">❭</center>
             </td>
           </tr>
-        </table>
-        <table style="width:100%; font-size: 140%; margin-bottom:1rem">
-          <tr style="width:100%">
-            <td style="width:100%">
-              Excéntrico, respetado, disruptivo, creador alternativo. Convertía la
-              chatarra en obras de arte y, por su trayectoria y personalidad, se había
-              convertido en un&nbsp;...
-            </td>
-          </tr>
-          <tr style="width:100%">
-            <td>
-              https://www.clarin.com/cultura/murio-artista-plastico-carlos-regazzoni_0_SuCzZt3Kq8.html
-            </td>
-          </tr>
-        </table>
-      </div>
-      `;
+      </table>
+      <table style="width:100%; margin-bottom:1rem">
+        <tr style="width:100%">
+          <td style="width:50%">
+            <center style="font-size: 80%">${article.source}</center>
+          </td>
+          <td style="width:50%">
+            <center style="font-size: 80%">${article.timeAgo}</center>
+          </td>
+        </tr>
+      </table>
+    </div>
+    `;
   });
 
   return items;
