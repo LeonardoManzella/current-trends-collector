@@ -10,7 +10,7 @@
 // importScripts('jquery-3.3.1');
 // const htmlparser2 = require("htmlparser2");
 import {obtainGoogleTrendsArg, obtainGoogleTrendsGlobal} from './googleAnalizer';
-import generateTable from './htmlTableGenerator';
+import {generateGoogleTable} from './htmlTableGenerator';
 
 const IFTTT_WEBHOOK_URL = 'https://maker.ifttt.com/trigger/estado_transito/with/key/bEJDjvRQ04PPYZVlKAP2E8';
 
@@ -25,7 +25,7 @@ export default async function handleRequest(mainRequest) {
 
     //TODO parse Twitter analizer page to generate twitter daily trending topics section, in another JS file
 
-    const htmlTable = generateTable([
+    const htmlTable = generateGoogleTable([
         googleTrendsArg
     ]);
 
