@@ -12,7 +12,7 @@
 import {obtainGoogleTrendsArg, obtainGoogleTrendsGlobal} from './googleAnalizer';
 import {generateGoogleTable} from './htmlTableGenerator';
 
-const IFTTT_WEBHOOK_URL = 'https://maker.ifttt.com/trigger/estado_transito/with/key/bEJDjvRQ04PPYZVlKAP2E8';
+const IFTTT_WEBHOOK_URL = 'https://maker.ifttt.com/trigger/social_trends/with/key/bEJDjvRQ04PPYZVlKAP2E8';
 
 //Handle Main Request
 export default async function handleRequest(mainRequest) {
