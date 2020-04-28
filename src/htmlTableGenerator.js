@@ -12,6 +12,7 @@ export function generateGoogleTable(argArticles, globalArticles) {
 }
 
 const generateTableCard = (arrayOfArticles, location) => {
+  console.log("Calling generateTableCard. arrayOfArticles: ", arrayOfArticles);
   let sectionToReturn = `
     <div style="margin: 1rem 0; margin-bottom: 2rem;">
       <table style="width:100%; font-size: 210%;">
@@ -30,7 +31,8 @@ const generateTableCard = (arrayOfArticles, location) => {
   return sectionToReturn;
 };
 
-const generateCardItems = () => {
+const generateCardItems = (arrayOfArticles) => {
+  console.log("Calling generateCardItems. arrayOfArticles: ", arrayOfArticles);
   let items = '';
   arrayOfArticles.forEach( article => {
       items += `

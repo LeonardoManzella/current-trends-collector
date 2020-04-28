@@ -12,7 +12,7 @@ export async function obtainGoogleTrendsGlobal() {
 async function obtainGoogleTrends(url) {
     console.group('Calling obtainGoogleTrends');
 
-    await fetch(url)
+    const trends = await fetch(url)
     .then(function (response) {
         return response.text();
     })
@@ -22,6 +22,7 @@ async function obtainGoogleTrends(url) {
         response = response.substring(JSON_DATA_START);
         response = JSON.parse(response).default.trendingSearchesDays[FIRST].trendingSearches;
         console.log("Post send, google response: ", response);
+        return response;
     })
     .catch(function (error) {
         console.error('--- Error Detected ---');
@@ -30,4 +31,5 @@ async function obtainGoogleTrends(url) {
     });
 
     console.groupEnd();
+    return trends;
 }

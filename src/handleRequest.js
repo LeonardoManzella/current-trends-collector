@@ -19,15 +19,12 @@ export default async function handleRequest(mainRequest) {
     console.log("---------------------------------------------------------------------------------------------");
     console.log("handleRequest initiated");
     
-    //TODO use Google API to generate daily trend news, in another JS file
     const googleTrendsArg = await obtainGoogleTrendsArg();
     const googleTrendsGlobal = await obtainGoogleTrendsGlobal();
 
     //TODO parse Twitter analizer page to generate twitter daily trending topics section, in another JS file
 
-    const htmlTable = generateGoogleTable([
-        googleTrendsArg
-    ]);
+    const htmlTable = generateGoogleTable(googleTrendsArg, googleTrendsGlobal);
 
     console.group('Calling IFTTT');
     await fetch(IFTTT_WEBHOOK_URL, {
