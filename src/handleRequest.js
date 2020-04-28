@@ -30,7 +30,6 @@ export default async function handleRequest(mainRequest) {
     ]);
 
     console.group('Calling IFTTT');
-    // TODO uncomment to publish
     await fetch(IFTTT_WEBHOOK_URL, {
         body: JSON.stringify({ 
             value1: htmlTable,
