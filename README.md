@@ -9,6 +9,10 @@ The project uses the following libraries:
 * Node.js
 * Wrangler
 * Prettier
+* JsHint
+* Cheerio
+* htmlparser2
+* X-ray
 
 ### Serverless
 
