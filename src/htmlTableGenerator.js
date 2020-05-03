@@ -1,7 +1,25 @@
+import format from 'date-fns/format';
+const DATE_TIME_FORMAT = 'yyyy-MM-dd';
+const DATE_DAY_WEEK_FORMAT = 'i';
+
+const currentDayWeek = () => {
+  const currentDay = format(new Date(), DATE_DAY_WEEK_FORMAT);
+  console.log("currentDay: ", currentDay);
+  const LUNES=1, MARTES=2, MIERCOLES=3, JUEVES=4, VIERNES=5, SABADO=6, DOMINGO=7;
+
+  if(currentDay == LUNES) return "Lunes";
+  if(currentDay == MARTES) return "Martes";
+  if(currentDay == MIERCOLES) return "Miercoles";
+  if(currentDay == JUEVES) return "Jueves";
+  if(currentDay == VIERNES) return "Viernes";
+  if(currentDay == SABADO) return "Sabado";
+  if(currentDay == DOMINGO) return "Domingo";
+};
+
 export function generateGoogleTable(argArticles, globalArticles) {
     console.group('Calling generateTable');
 
-    let tableToReturn = generateTableCard(argArticles, "Argentina") + generateTableCard(globalArticles, "Global");
+    let tableToReturn = generateTableCard(argArticles, "Argentina") + generateTableCard(globalArticles, "USA");
     console.groupEnd();
     return tableToReturn;
 }
@@ -14,7 +32,7 @@ const generateTableCard = (arrayOfArticles, location) => {
           <tr style="width:100%">
               <td style="width:100%">
                   <center>
-                    <b style="font-size: 125%;">Tendencias de Google ${location}</b>
+                    <b style="font-size: 125%;">Tendencias de Google ${location} ::: ${currentDayWeek()} ${format(new Date(), DATE_TIME_FORMAT)}</b>
                   </center>
                 </td>
           </tr>
