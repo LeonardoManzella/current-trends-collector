@@ -1,7 +1,7 @@
 export function generateGoogleTable(argArticles, globalArticles) {
     console.group('Calling generateTable');
 
-    let tableToReturn = generateTableCard(argArticles, "Argentina") + generateTableCard(globalArticles, "Global");
+    let tableToReturn = generateTableCard(argArticles, "Argentina") + generateTableCard(globalArticles, "USA");
     console.groupEnd();
     return tableToReturn;
 }

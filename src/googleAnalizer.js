@@ -1,12 +1,12 @@
 const GOOGLE_TRENDS_AR_URL = "https://trends.google.com/trends/api/dailytrends?hl=es-419&tz=180&geo=AR&ns=15";
-const GOOGLE_TRENDS_GLOBAL_URL = "https://trends.google.com/trends/api/dailytrends?hl=es-419&tz=180&geo=US&ns=15";
+const GOOGLE_TRENDS_US_URL = "https://trends.google.com/trends/api/dailytrends?hl=es-419&tz=180&geo=US&ns=15";
 
 export async function obtainGoogleTrendsArg() {
     return await obtainGoogleTrends(GOOGLE_TRENDS_AR_URL);
 }
 
 export async function obtainGoogleTrendsGlobal() {
-    return await obtainGoogleTrends(GOOGLE_TRENDS_GLOBAL_URL);
+    return await obtainGoogleTrends(GOOGLE_TRENDS_US_URL);
 }
 
 async function obtainGoogleTrends(url) {
