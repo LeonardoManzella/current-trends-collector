@@ -27,12 +27,12 @@ export function generateGoogleTable(argArticles, globalArticles) {
 const generateTableCard = (arrayOfArticles, location) => {
   console.log("Calling generateTableCard. arrayOfArticles: ", arrayOfArticles);
   let sectionToReturn = `
-    <div style="margin: 1rem 0; margin-bottom: 2rem;">
+    <div style="margin: 1rem 0; margin-bottom: 5rem;">
       <table style="width:100%;">
           <tr style="width:100%">
               <td style="width:100%">
                   <center>
-                    <b style="font-size: 125%;">Tendencias de Google ${location} ::: ${currentDayWeek()} ${format(new Date(), DATE_TIME_FORMAT)}</b>
+                  <b style="font-size: 110%; text-transform: uppercase; font-family: BlenderProBold,sans-serif !important; border: 1px black solid; border-left: 6px solid black; border-right: 6px solid black; border-radius:6px; padding:3px; line-height: 1.5; background-color: black; color: white !important;">Tendencias de Google ${location} ::: ${currentDayWeek()} ${format(new Date(), DATE_TIME_FORMAT)}</b>
                   </center>
                 </td>
           </tr>
