@@ -52,8 +52,8 @@ const generateCardItems = (arrayOfArticles) => {
     const FIRST = 0;
     article = article.articles[FIRST];
     items += `
-    <div style="background-color:#e2e1e1; border-radius: 0.5rem;">
-      <table style="width:100%;">
+    <div style="background-color:white; border: 2px solid black; border-bottom-left-radius: 0.5rem; border-top-left-radius: 0.5rem; border-left: 12px solid black; margin-bottom:1rem;">
+      <table style="width:100%; font-size: 170%; font-family: BlenderProBold,sans-serif !important; text-transform: uppercase; color: white; background-color: #4d7f82;">
         <tr style="width:100%">
           
           ${ article.image && article.image.imageUrl?
@@ -68,35 +68,35 @@ const generateCardItems = (arrayOfArticles) => {
           
           <td style="width: ${ article.image && article.image.imageUrl? `80%`: `100%`}">
             <center>
-              <b style="font-size: 100%;">${article.title}</b>
+              <b style="color: white !important; font-family: BlenderProBold,sans-serif !important;">${article.title}</b>
             </center>
           </td>
         </tr>
       </table>
       <table style="width:100%;">
         <tr style="width:100%">
-          <td style="width:100%; font-size: 100%; border-bottom: #d2d2d2 0.025rem solid;">
+          <td style="width:100%; font-size: 100%; border-bottom: #d2d2d2 0.025rem solid; color: #4d7f82 !important; font-family: BlenderProBold,sans-serif !important; ">
             ${article.snippet}
           </td>
         </tr>
       </table>
       <table style="width:100%;">
         <tr style="width:100%">
-          <td style="width:95%; font-size: 60%; overflow:hidden; text-overflow:ellipsis">
-            ${article.url}
+          <td style="width:95%; font-size: 60%; overflow:hidden; text-overflow:ellipsis;">
+            <a style="color: #4d7f82 !important; font-family: BlenderProBold,sans-serif !important;" href="${article.url}">${article.url}<a/>
             </td>
             <td style="width:5%;">
-              <center style="font-size: 100%">❭</center>
+              <center style="font-size: 100%; color: #4d7f82 !important; font-family: BlenderProBold,sans-serif !important;">❭</center>
             </td>
           </tr>
       </table>
-      <table style="width:100%; margin-bottom:1rem">
+      <table style="width:100%;">
         <tr style="width:100%">
           <td style="width:50%">
-            <center style="font-size: 80%">${article.source}</center>
+            <center style="font-size: 80%; color: #4d7f82 !important; font-family: BlenderProBold,sans-serif !important;">${article.source}</center>
           </td>
           <td style="width:50%">
-            <center style="font-size: 80%">${article.timeAgo}</center>
+            <center style="font-size: 80%; color: #4d7f82 !important; font-family: BlenderProBold,sans-serif !important;">${article.timeAgo}</center>
           </td>
         </tr>
       </table>
