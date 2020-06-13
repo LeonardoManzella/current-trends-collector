@@ -19,7 +19,8 @@ const currentDayWeek = () => {
 export function generateGoogleTable(argArticles, globalArticles) {
     console.group('Calling generateTable');
 
-    let tableToReturn = generateTableCard(argArticles, "Argentina") + generateTableCard(globalArticles, "USA");
+    let tableToReturn = [generateTableCard(argArticles, "Argentina"), generateTableCard(globalArticles, "USA")]
+     ;
     console.groupEnd();
     return tableToReturn;
 }
@@ -53,7 +54,7 @@ const generateCardItems = (arrayOfArticles) => {
     article = article.articles[FIRST];
     items += `
     <div style="background-color:white; border: 2px solid black; border-bottom-left-radius: 0.5rem; border-top-left-radius: 0.5rem; border-left: 12px solid black; margin-bottom:1rem;">
-      <table style="width:100%; font-size: 170%; font-family: BlenderProBold,sans-serif !important; text-transform: uppercase; color: white; background-color: #4d7f82;">
+      <table style="width:100%; font-size: 170%; font-family: BlenderProBold,sans-serif !important; text-transform: uppercase; color: white; background-color: #545454;">
         <tr style="width:100%">
           
           ${ article.image && article.image.imageUrl?
@@ -75,7 +76,7 @@ const generateCardItems = (arrayOfArticles) => {
       </table>
       <table style="width:100%;">
         <tr style="width:100%">
-          <td style="width:100%; font-size: 100%; border-bottom: #d2d2d2 0.025rem solid; color: #4d7f82 !important; font-family: BlenderProBold,sans-serif !important; ">
+          <td style="width:100%; font-size: 100%; border-bottom: #d2d2d2 0.025rem solid; color: black !important; font-family: BlenderProBold,sans-serif !important; ">
             ${article.snippet}
           </td>
         </tr>
@@ -83,20 +84,20 @@ const generateCardItems = (arrayOfArticles) => {
       <table style="width:100%;">
         <tr style="width:100%">
           <td style="width:95%; font-size: 60%; overflow:hidden; text-overflow:ellipsis;">
-            <a style="color: #4d7f82 !important; font-family: BlenderProBold,sans-serif !important;" href="${article.url}">${article.url}<a/>
+            <a style="color: black !important; font-family: BlenderProBold,sans-serif !important;" href="${article.url}">${article.url}<a/>
             </td>
             <td style="width:5%;">
-              <center style="font-size: 100%; color: #4d7f82 !important; font-family: BlenderProBold,sans-serif !important;">❭</center>
+              <center style="font-size: 100%; color: black !important; font-family: BlenderProBold,sans-serif !important;">❭</center>
             </td>
           </tr>
       </table>
       <table style="width:100%;">
         <tr style="width:100%">
           <td style="width:50%">
-            <center style="font-size: 80%; color: #4d7f82 !important; font-family: BlenderProBold,sans-serif !important;">${article.source}</center>
+            <center style="font-size: 80%; color: black !important; font-family: BlenderProBold,sans-serif !important;">${article.source}</center>
           </td>
           <td style="width:50%">
-            <center style="font-size: 80%; color: #4d7f82 !important; font-family: BlenderProBold,sans-serif !important;">${article.timeAgo}</center>
+            <center style="font-size: 80%; color: black !important; font-family: BlenderProBold,sans-serif !important;">${article.timeAgo}</center>
           </td>
         </tr>
       </table>
