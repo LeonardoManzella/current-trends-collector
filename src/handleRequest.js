@@ -1,18 +1,8 @@
-// import request from 'request'
-// import Xray from 'x-ray'
-// import cheerio from "cheerio"
-// var xray_ready = Xray();
-// import prepareFakeWindow from './workerFakeDOM'
-// import prepareJQuery from './jquery-3.3.1'
-// import prepareSignalR from './hubs';
-// import initSignalR from './jquery.signalR-2.4.0'
-// importScripts("workerFakeDOM.js");
-// importScripts('jquery-3.3.1');
-// const htmlparser2 = require("htmlparser2");
 import {obtainGoogleTrendsArg, obtainGoogleTrendsGlobal} from './googleAnalizer';
 import {generateGoogleTable} from './htmlTableGenerator';
 
-const IFTTT_WEBHOOK_URL = 'https://maker.ifttt.com/trigger/social_trends/with/key/bEJDjvRQ04PPYZVlKAP2E8';
+const IFTTT_WEBHOOK_URL_ARG = 'https://maker.ifttt.com/trigger/social_trends_AR/with/key/bEJDjvRQ04PPYZVlKAP2E8';
+const IFTTT_WEBHOOK_URL_USA = 'https://maker.ifttt.com/trigger/social_trends_US/with/key/bEJDjvRQ04PPYZVlKAP2E8';
 
 //Handle Main Request
 export default async function handleRequest(mainRequest) {
@@ -22,14 +12,15 @@ export default async function handleRequest(mainRequest) {
     const googleTrendsArg = await obtainGoogleTrendsArg();
     const googleTrendsGlobal = await obtainGoogleTrendsGlobal();
 
-    //TODO parse Twitter analizer page to generate twitter daily trending topics section, in another JS file
+    //TODO parse Twitter analizer page to generate twitter daily trending topics section, in another JS file. Probably better to copy project in another worker
 
-    const htmlTable = generateGoogleTable(googleTrendsArg, googleTrendsGlobal);
+    const htmlTables = generateGoogleTable(googleTrendsArg, googleTrendsGlobal);
+    const ARG = 0, USA = 1;
 
     console.group('Calling IFTTT');
-    await fetch(IFTTT_WEBHOOK_URL, {
+    await fetch(IFTTT_WEBHOOK_URL_ARG, {
         body: JSON.stringify({ 
-            value1: htmlTable,
+            value1: htmlTables[ARG],
             value2: "Tendencias de Twitter y Google",
             value3: "optional value",
             }),
@@ -37,7 +28,20 @@ export default async function handleRequest(mainRequest) {
         headers: { 'Content-Type': 'application/json' },
     })
     .then(function (response) {
-        console.log("Post send, response: ", response);
+        console.log("Post ARG send, response: ", response);
+
+        return fetch(IFTTT_WEBHOOK_URL_USA, {
+            body: JSON.stringify({ 
+                value1: htmlTables[USA],
+                value2: "Tendencias de Twitter y Google",
+                value3: "optional value",
+                }),
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+        });
+    })
+    .then(function (response) {
+        console.log("Post USA send, response: ", response);
     })
     .catch(function (error) {
         console.error('--- Error Detected ---');

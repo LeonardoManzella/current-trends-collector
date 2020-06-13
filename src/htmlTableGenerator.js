@@ -19,8 +19,7 @@ const currentDayWeek = () => {
 export function generateGoogleTable(argArticles, globalArticles) {
     console.group('Calling generateTable');
 
-    let tableToReturn = generateTableCard(argArticles, "Argentina")
-    //  + generateTableCard(globalArticles, "USA")
+    let tableToReturn = [generateTableCard(argArticles, "Argentina"), generateTableCard(globalArticles, "USA")]
      ;
     console.groupEnd();
     return tableToReturn;
