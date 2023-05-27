@@ -2,7 +2,7 @@ import {obtainGoogleTrendsArg, obtainGoogleTrendsGlobal} from './googleAnalizer'
 import {generateGoogleTable} from './htmlTableGenerator';
 
 const IFTTT_WEBHOOK_URL_ARG = 'https://maker.ifttt.com/trigger/social_trends_AR/with/key/bEJDjvRQ04PPYZVlKAP2E8';
-const IFTTT_WEBHOOK_URL_USA = 'https://maker.ifttt.com/trigger/social_trends_US/with/key/bEJDjvRQ04PPYZVlKAP2E8';
+const IFTTT_WEBHOOK_URL_USA = 'https://maker.ifttt.com/trigger/social_trends_US/with/key/erE6z2Zh-3iYdRwydO7bsUGYWWb0a_gH8tkSTSZoeJn';
 
 //Handle Main Request
 export default async function handleRequest(mainRequest) {
